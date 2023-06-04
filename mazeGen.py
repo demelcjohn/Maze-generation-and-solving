@@ -32,7 +32,7 @@ maze = np.empty((n, m), dtype=int)
 maze = np.zeros((n, m))
 maze = maze.astype(int)
 
-maze = gen(maze, 0, 0, n, m)
+# maze = gen(maze, 0, 0, n, m)
 displayMaze(maze)
 
 # d = 0
