@@ -13,7 +13,7 @@ def displayMaze(maze):
             elif maze[i][j] == 0:
                 print("#", end=" ")
             elif maze[i][j] == 1:
-                print("-", end=" ")
+                print(" ", end=" ")
         print("+")
     for i in range(m+2):
         print("+", end=" ")
