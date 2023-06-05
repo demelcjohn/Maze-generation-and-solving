@@ -1,14 +1,22 @@
+import os
 import random
 import numpy as np
 from displayMaze import displayMaze
 
 stack = []
 neighbour = {
-    0: (-1, -1),
-    1: (-1, 1),
-    2: (1, -1),
-    3: (1, 1)
+    0: (-1, 0),
+    1: (0, -1),
+    2: (1, 0),
+    3: (0, 1)
 }
+
+
+def clear_terminal():
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
 
 
 def makeMaze(n, m):
@@ -29,19 +37,36 @@ def correctWay(maze):
         okneighbours = [0, 1, 2, 3]
         while True:
             nei = random.choice(okneighbours)
+            print(nei)
             nIndex = neighbour[nei]
-            print(nIndex)
-            if maze[curr[0]+nIndex[0]][curr[1]+nIndex[1]] == 0:
-                if checkNeighbours(maze, curr[0]+nIndex[0], curr[1]+nIndex[1]):
-                    curr = (curr[0]+nIndex[0], curr[1]+nIndex[1])
-                    stack.append(curr)
-                    break
-            else:
-                okneighbours.pop(nei)
+            flag = 0
+            if curr[0]+nIndex[0] != -1 and curr[1]+nIndex[1] != -1 and curr[0]+nIndex[0] != n-1 and curr[1]+nIndex[1] != m-1:
+                if maze[curr[0]+nIndex[0]][curr[1]+nIndex[1]] == 0:
+                    if checkNeighbours(maze, curr[0]+nIndex[0], curr[1]+nIndex[1], 1):
+                        flag = 1
+                        curr = (curr[0]+nIndex[0], curr[1]+nIndex[1])
+                        stack.append(curr)
+                        maze[curr[0]][curr[1]] = 1
+                        break
+            if flag == 0:
+                okneighbours.remove(nei)
             if okneighbours == []:
                 stack.pop()
                 curr = stack[-1]
                 break
+        clear_terminal()
+        displayMaze(maze)
+    return maze
 
 
-def checkNeighbours(maze, x, y):
+def checkNeighbours(maze, x, y, n):
+    print(x, y)
+    count = 0
+    for i in (-1, 1):
+        for j in (-1, 1):
+            if (maze[x+i][y+j] == 1):
+                count += 1
+    if count > n:
+        return False
+    else:
+        return True
