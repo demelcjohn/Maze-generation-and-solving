@@ -32,9 +32,11 @@ def correctWay(maze):
     curr = (0, 0)
     maze[0][0] = 1
     stack.append(curr)
-    while curr != (n-1, m-1):
+    end = False
+    while stack != [] and end == False:  # curr != (n-1, m-1):
         okneighbours = [0, 1, 2, 3]
         while True:
+            print(curr)
             nei = random.choice(okneighbours)
             nIndex = neighbour[nei]
             flag = 0
@@ -48,9 +50,12 @@ def correctWay(maze):
                         break
             if flag == 0:
                 okneighbours.remove(nei)
-            if okneighbours == []:
+            if okneighbours == [] and not (curr[0] == 0 and curr[1] == 0):
                 stack.pop()
                 curr = stack[-1]
+                break
+            elif okneighbours == [] and (curr[0] == 0 and curr[1] == 0):
+                end = True
                 break
         clear_terminal()
         displayMaze(maze)
@@ -64,13 +69,12 @@ def checkNeighbours(maze, x, y, val):
     count = 0
     for i in range(2):
         for j in (-1, 1):
-            if (x+i < n) and (y+j < m):
-                if i == 0:
-                    if (maze[x][y+j] == 1):
-                        count += 1
-                if i == 1:
-                    if (maze[x+j][y] == 1):
-                        count += 1
+            if i == 0 and (y+j < m):
+                if (maze[x][y+j] == 1):
+                    count += 1
+            if i == 1 and (x+i < n):
+                if (maze[x+j][y] == 1):
+                    count += 1
     if count > val:
         return False
     else:
