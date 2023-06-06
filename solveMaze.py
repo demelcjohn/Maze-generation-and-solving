@@ -18,6 +18,8 @@ def solveMaze(maze):
     maze[curr[0]][curr[1]] = 2
     stack.append(curr)
     while not (curr[0] == n-1 and curr[1] == m-1):
+        if maze[curr[0]][curr[1]] == 2:
+            stack.append(curr)
         nei = getNeighbour(maze, curr)
         print(nei)
         if nei != (-1, -1):
@@ -31,7 +33,7 @@ def solveMaze(maze):
         displayMaze(maze)
         print()
         displayMaze(mazeReal)
-        # print("\n", maze)
+        print("\n", maze)
     displayMaze(maze)
 
 
