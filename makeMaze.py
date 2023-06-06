@@ -25,6 +25,7 @@ def makeMaze(n, m):
     displayMaze(maze)
 
     maze = correctWay(maze)
+    return maze
 
 
 def correctWay(maze):
