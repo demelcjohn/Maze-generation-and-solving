@@ -14,6 +14,8 @@ def displayMaze(maze):
                 print("#", end=" ")
             elif maze[i][j] == 1:
                 print("-", end=" ")
+            elif maze[i][j] == 2:
+                print("*", end=" ")
         print("#")
     for i in range(m+2):
         print("#", end=" ")
