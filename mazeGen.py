@@ -8,6 +8,7 @@ from solveMaze import solveMaze
 n = 20  # int(input())
 m = 30  # int(input())
 maze = makeMaze(n, m)
+input()
 solveMaze(maze)
 
 

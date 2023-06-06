@@ -37,7 +37,6 @@ def correctWay(maze):
     while stack != [] and end == False:  # curr != (n-1, m-1):
         okneighbours = [0, 1, 2, 3]
         while True:
-            print(curr)
             nei = random.choice(okneighbours)
             nIndex = neighbour[nei]
             flag = 0
