@@ -33,8 +33,7 @@ def solveMaze(maze):
         displayMaze(maze)
         print()
         displayMaze(mazeReal)
-        print("\n", maze)
-    displayMaze(maze)
+        
 
 
 def getNeighbour(maze, pos):

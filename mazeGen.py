@@ -5,18 +5,13 @@ from makeMaze import makeMaze
 from solveMaze import solveMaze
 
 
-n = 20  # int(input())
-m = 30  # int(input())
+print("\nMaze Generation and Solving \n")
+n =  int(input("Enter number of rows : "))
+m =  int(input("Enter number of columns : "))
 maze = makeMaze(n, m)
 input()
+
 solveMaze(maze)
 
 
-# S-####################
-# -####################
-# ------###-###########
-###### --##-#######-###
-####### -##-##------###
-####### ----##-####-###
-####### -##----####-###
-# ---E
+

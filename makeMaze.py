@@ -59,7 +59,6 @@ def correctWay(maze):
                 break
         clear_terminal()
         displayMaze(maze)
-        print("\n", maze)
         # time.sleep(1)
     return maze
 
