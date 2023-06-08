@@ -1,5 +1,6 @@
 import copy
 import os
+import time
 from displayMaze import displayMaze
 
 
@@ -17,8 +18,9 @@ def solveMaze(maze):
     curr = (0, 0)
     maze[curr[0]][curr[1]] = 2
     stack.append(curr)
+    inside = 1
     while not (curr[0] == n-1 and curr[1] == m-1):
-        if maze[curr[0]][curr[1]] == 2:
+        if maze[curr[0]][curr[1]] == 2 and inside ==0:
             stack.append(curr)
         nei = getNeighbour(maze, curr)
         print(nei)
@@ -26,13 +28,18 @@ def solveMaze(maze):
             curr = nei
             maze[curr[0]][curr[1]] = 2
             stack.append(curr)
+            inside = 1
         else:
             maze[curr[0]][curr[1]] = 3
             curr = stack.pop()
+            inside = 0
         clear_terminal()
         displayMaze(maze)
         print()
         displayMaze(mazeReal)
+        # print(stack)
+        # time.sleep(1)
+    print(stack)
         
 
 
